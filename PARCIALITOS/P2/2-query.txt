@@ -1,0 +1,7 @@
+movies_hitchcock_director = π movie_id, director_id (movies_directors) ⨝ π director_id (ρ director_id←id (π id (σ last_name = 'Hitchcock' (directors))))
+
+movies_hitchcock_actor = π actor_id (ρ actor_id←id (π id (σ last_name = 'Hitchcock' ∧ first_name = 'Alfred (I)' (actors)))) ⨝ π actor_id, movie_id (roles)
+
+movies_id = π movie_id (movies_hitchcock_director) ∩ π movie_id (movies_hitchcock_actor)
+
+π name, movie_id (ρ movie_id←id (movies)) ⨝ π movie_id (movies_id)

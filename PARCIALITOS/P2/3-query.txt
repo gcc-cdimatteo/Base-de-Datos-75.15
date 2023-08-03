@@ -1,0 +1,7 @@
+actores = π actor_id, movie_id (roles) ⨝ π movie_id (σ name = 'Life of Brian' (ρ movie_id←id (movies)))
+
+movies_id = π movie_id, actor_id (roles) ⨝ π actor_id (actores)
+
+peliculas = π movie_id, title (ρ movie_id←id, title←name (σ name ≠ 'Life of Brian' (movies))) ⨝ π actor_id, movie_id (movies_id)
+
+π title, actor_id (peliculas) ⟕ π actor_id, first_name, last_name (ρ actor_id←id (actors))

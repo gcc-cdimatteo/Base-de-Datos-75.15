@@ -1,0 +1,46 @@
+-- EJ 1
+
+movies_id = π movie_id, director_id (movies_directors) ÷ π director_id (ρ director_id←id (σ last_name = 'Scorsese' (directors))) 
+
+σ year ≥ 1970 ∧ year ≤ 1979 (π name, year, movie_id (ρ movie_id←id (movies)) ⨝ π movie_id (movies_id))
+
+-- EJ 2
+
+movies_hitchcock_director = π movie_id, director_id (movies_directors) ⨝ π director_id (ρ director_id←id (π id (σ last_name = 'Hitchcock' (directors))))
+
+movies_hitchcock_actor = π actor_id (ρ actor_id←id (π id (σ last_name = 'Hitchcock' ∧ first_name = 'Alfred (I)' (actors)))) ⨝ π actor_id, movie_id (roles)
+
+movies_id = π movie_id (movies_hitchcock_director) ∩ π movie_id (movies_hitchcock_actor)
+
+π name, movie_id (ρ movie_id←id (movies)) ⨝ π movie_id (movies_id)
+
+-- EJ 3
+
+actores = π actor_id, movie_id (roles) ⨝ π movie_id (σ name = 'Life of Brian' (ρ movie_id←id (movies)))
+
+movies_id = π movie_id, actor_id (roles) ⨝ π actor_id (actores)
+
+peliculas = π movie_id, title (ρ movie_id←id, title←name (σ name ≠ 'Life of Brian' (movies))) ⨝ π actor_id, movie_id (movies_id)
+
+π title, actor_id (peliculas) ⟕ π actor_id, first_name, last_name (ρ actor_id←id (actors))
+
+-- EJ 4
+
+drama_movies = π movie_id (σ genre = 'Drama' (movies_genres)) ⨝ π movie_id, name, year (ρ movie_id←id (movies))
+
+years = π movies.year drama_movies
+movies_years = π drama_movies1.year (σ (drama_movies1.year > drama_movies2.year) (ρ drama_movies1 drama_movies ⨯ ρ drama_movies2 drama_movies))
+year = years - movies_years
+
+π year, name (movies) ⨝ year
+
+-- EJ 5
+
+R1 = ρ r1 π director_id, movie_id movies_directors
+R2 = ρ r2 π director_id, movie_id movies_directors
+R3 = ρ r3 π director_id, movie_id movies_directors
+
+dos_directores = π r1.movie_id, r1.director_id, r2.director_id (R1 ⨝ r1.director_id ≠ r2.director_id ∧ r1.movie_id = r2.movie_id (R2))
+tres_directores = π r1.movie_id (dos_directores ⨝ r1.movie_id = r3.movie_id ∧ r1.director_id ≠ r3.director_id ∧ r2.director_id ≠ r3.director_id (R3))
+
+π name, movie_id (ρ movie_id←id (movies)) ⨝ π movie_id (tres_directores)

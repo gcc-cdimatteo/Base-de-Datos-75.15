@@ -1,0 +1,7 @@
+drama_movies = π movie_id (σ genre = 'Drama' (movies_genres)) ⨝ π movie_id, name, year (ρ movie_id←id (movies))
+
+years = π movies.year drama_movies
+movies_years = π drama_movies1.year (σ (drama_movies1.year > drama_movies2.year) (ρ drama_movies1 drama_movies ⨯ ρ drama_movies2 drama_movies))
+year = years - movies_years
+
+π year, name (movies) ⨝ year

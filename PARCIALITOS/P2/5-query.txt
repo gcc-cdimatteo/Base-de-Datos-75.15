@@ -1,0 +1,8 @@
+R1 = ρ r1 π director_id, movie_id movies_directors
+R2 = ρ r2 π director_id, movie_id movies_directors
+R3 = ρ r3 π director_id, movie_id movies_directors
+
+dos_directores = π r1.movie_id, r1.director_id, r2.director_id (R1 ⨝ r1.director_id ≠ r2.director_id ∧ r1.movie_id = r2.movie_id (R2))
+tres_directores = π r1.movie_id (dos_directores ⨝ r1.movie_id = r3.movie_id ∧ r1.director_id ≠ r3.director_id ∧ r2.director_id ≠ r3.director_id (R3))
+
+π name, movie_id (ρ movie_id←id (movies)) ⨝ π movie_id (tres_directores)

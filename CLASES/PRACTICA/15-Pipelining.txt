@@ -1,0 +1,75 @@
+OPCION 1
+COSTO 1a: INDEX SCAN en Estrellas
+
+C1a = H(I1) + B(Estrellas) / V(constelacion, Estrellas)
+    = 1 + 1,000 / 10 = 101
+
+C1b = B(sel) * B(Observaciones)
+    = 100 * 5,000 = 500,000
+   
+Costo total Opcion 1 = 500,101 
+
+OPCION 2
+B(observaciones) + n(Observaciones) * Costo_idx_scan
+B(observaciones) + n(Observaciones) * (H(I2) + 1)
+5,000 + 50,000 * (4 + 1) = 5,000 + 250,000 = 255,000
+
+Costo total Opcion 2: 255,000
+
+
+OPCION 3 Con el I3(nombre_estrella, Observaciones):
+
+Ponemos un índice por nombre_estrella en Observaciones -> I3(nombre_estrella, Observaciones)
+
+	único loop con índice
+			*
+	 /				\
+	/				 \
+Observaciones		 𝝈_constel='Leo'
+    (I3)				   |
+					Estrellas
+					  (I1)
+
+
+aplicamos el filtro de la selección de constelación en estrellas (se hace con un index scan sobre el índice de constelación) y luego el join con observaciones sobre el índice de nombre_estrella -> usamos pipelining -> la salida de la selección de constelación va a buscar match en la tabla de observaciones por nombre_estrella
+
+Costo selección 	= H(I1) + B(estrellas)/V(constelación, estrellas) (por indice de clustering)
+				= 1 + 1000 / 10 = 101
+
+Costo join 	= B(R) + n(R) * cost_index_scan(S) -> por pipelining no hace falta leer de nuevo estrellas, me ahorro B(R)
+			= n(seleccion) * cost_index_scan(nombre_estrella, observaciones)
+
+n(seleccion) 	= n(estrellas) / V(constelación, estrellas)
+			= 10.000 / 10 = 1.000
+
+cost_index_scan(nombre_estrella, observaciones) 	= H(I3) + B(observaciones) / V(nombre_estrella, observaciones) -> propongo H(I3) = 5 que es una altura de árbol "razonable" para el problema
+										= 5 + 5.000 / 10.000
+										= 5 + 0.5 = 6
+
+Costo join = 1.000 * 6 = 6.000
+
+=> Costo Total = Costo selección + Costo join = 101 + 6.000 = 6.101
+
+
+C3a = INDEX SCAN en Estrellas
+C1a = H(I1) + B(Estrellas) / V(constelacion, Estrellas)
+= 1 + 1,000 / 10 = 101
+
+C3b = INDEX SCAN en Observaciones por cada estrella de la seleccion
+N(seleccion) * Idx_scan(I3)
+
+N(seleccion) = n(estrellas) / V(constelacion, estrellas) = 10,000 / 10 = 1,000
+Idx_scan(I3) = H(i3) + B(Observaciones) / V(nombre_estrella, observaciones)
+Elegimos H(I3) = 5 e indice de clustering
+
+C3b = 1,000 * ( 5 + 5,000 / 10,000) = 1,000 * (5 + 1) = 6,000
+
+C3 total = 101 + 6,000 = 6,101
+
+-- Si no era de clustering
+C3b = 1,000 * (5 + n(obs) / V(nom, obs)) = 1,000 * (5 + 50,000/10,000)
+= 1,000 * (5 + 5) = 10,000
+
+C3total = 10,101
+
+

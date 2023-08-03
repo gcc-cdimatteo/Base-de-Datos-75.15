@@ -1,0 +1,3 @@
+movies_id = π movie_id, director_id (movies_directors) ÷ π director_id (ρ director_id←id (σ last_name = 'Scorsese' (directors))) 
+
+σ year ≥ 1970 ∧ year ≤ 1979 (π name, year, movie_id (ρ movie_id←id (movies)) ⨝ π movie_id (movies_id))

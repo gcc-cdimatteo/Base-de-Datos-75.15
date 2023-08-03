@@ -1,0 +1,54 @@
+<mxfile host="app.diagrams.net" modified="2023-07-04T18:05:45.626Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5.1 Safari/605.1.15" etag="uek8F1tHnD0ecQHQlfl0" version="21.5.2" type="google">
+  <diagram name="Page-1" id="lhOP5Od-q5tnIWaXuWrx">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="1jrlr6d51zsklloDjRXX-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="1jrlr6d51zsklloDjRXX-1" target="1jrlr6d51zsklloDjRXX-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-1" value="licencias" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="1jrlr6d51zsklloDjRXX-2" target="1jrlr6d51zsklloDjRXX-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-2" value="multas" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-10" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="1jrlr6d51zsklloDjRXX-3" target="1jrlr6d51zsklloDjRXX-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-3" value="𝝈&lt;sub&gt;nro_licencia=&quot;740523&quot;&lt;/sub&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-11" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="1jrlr6d51zsklloDjRXX-4" target="1jrlr6d51zsklloDjRXX-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-4" value="𝝈&lt;sub&gt;pagada=FALSE&lt;/sub&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-7" value="Idx clustering" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="490" y="315" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="1jrlr6d51zsklloDjRXX-8" target="1jrlr6d51zsklloDjRXX-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="309.7931034482758" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-8" value="⋈&lt;sub&gt;licencias.dni_conductor = multas.dni_propietario&lt;/sub&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="170" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-9" value="File scan" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="315" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-12" value="Único loop" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="405" y="185" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1jrlr6d51zsklloDjRXX-14" value="𝜋&lt;sub&gt;licencias,multas&lt;/sub&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250.00310344827582" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
